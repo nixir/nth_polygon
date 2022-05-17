@@ -6,21 +6,23 @@ import matplotlib.pyplot as plt
 fig = plt.figure()
 ims = []
 
-n_seri = np.linspace(0.1,1,20)
+# n_seri = np.linspace(0.1,1,20)
 
-for n in n_seri:
+for n in range(1,11):
 
-    frac_in = Fraction(n).limit_denominator(50)
+    # n = 0.2
+    # frac_in = Fraction(n).limit_denominator(50)
+    # num = frac_in.numerator
+    # den = frac_in.denominator
 
 
-
-    num = frac_in.numerator
-    den = frac_in.denominator
+    num = n
+    den = 11
 
     all_item = num*den
 
-    if not all_item%2:
-        continue
+    # if not all_item%2:
+    #     continue
 
     theta = np.linspace(0, 2*np.pi, 100)
 
@@ -49,7 +51,7 @@ for n in n_seri:
 
         # k = (np.concatenate([k1,k2])).astype('int64')
 
-        k_tmp = np.arange(0,all_item)*math.floor(all_item/2)%all_item
+        k_tmp = (np.arange(0,all_item)*math.floor(all_item/2))%all_item
         k = np.insert(k_tmp,len(k_tmp),k_tmp[0])
 
         axes.plot(s_cos[k],s_sin[k])
@@ -58,7 +60,7 @@ for n in n_seri:
         s_sin = np.insert(s_sin,len(s_sin),s_sin[0])
         axes.plot(s_cos,s_sin)
 
-    title_str = str(num)+'/'+str(den)+' pi'
+    title_str = str(num)+'/'+str(den)+' 2pi'
 
     plt.title(title_str)
 
